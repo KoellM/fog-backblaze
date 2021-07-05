@@ -595,7 +595,7 @@ class Fog::Backblaze::Storage::Real
 
   # ref: https://www.backblaze.com/b2/docs/string_encoding.html
   def b2_url_encode(str)
-    URI.encode_www_form_component(str.force_encoding(Encoding::UTF_8)).gsub("%2F", "/")
+    URI.encode_www_form_component(str.dup.force_encoding(Encoding::UTF_8)).gsub("%2F", "/")
   end
 
   # return @options[:b2_account_id] or call b2_authorize_account when using application key
